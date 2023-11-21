@@ -11,6 +11,10 @@ import {
 } from "../../../../../helpers/filePath.js";
 
 class AuthController {
+  getLoginForm = asyncHandler(async (req, res) => {
+    return res.status(STATUS_CODE.OK).render("login");
+  });
+
   postLogin = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
@@ -32,14 +36,17 @@ class AuthController {
     return res.status(STATUS_CODE.OK).json(response);
   });
 
+  getRegisterForm = asyncHandler(async (req, res) => {
+    return res.status(STATUS_CODE.OK).render("register");
+  });
+
   postRegister = asyncHandler(async (req, res) => {
-    const { userName, email, password, gender } = req.body;
+    const { userName, email, password } = req.body;
 
     const { user, verifyLink } = await authService.createUser({
       userName,
       email,
-      password,
-      gender,
+      password
     });
 
     const response = new ApiResponse(

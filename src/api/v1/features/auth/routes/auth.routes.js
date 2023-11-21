@@ -12,6 +12,8 @@ const authRouter = Router();
 
 // /api/v1/auth
 
+authRouter.get("/register", authController.getRegisterForm);
+
 authRouter.post(
   "/register",
   registerValidator,
@@ -29,6 +31,7 @@ authRouter.post(
   authController.postUserVerificationStatus
 );
 
+authRouter.get("/login", authController.getLoginForm);
 authRouter.post("/login", isLoggedIn, loginValidator, authController.postLogin);
 
 // note: important do not use get method to logout

@@ -31,7 +31,7 @@ const { clientUrl } = config;
 class UserService {
   createUser = async (userInfo) => {
     // 1. extract all info
-    const { userName, email, password, gender } = userInfo;
+    const { userName, email, password } = userInfo;
 
     // 2. check if user already exist with email id or userName
     const prevUser = await User.findOne({
@@ -50,7 +50,6 @@ class UserService {
     const user = new User({
       userName,
       email,
-      gender,
       password: hashedPassword,
     });
 

@@ -32,12 +32,6 @@ const registerValidator = asyncHandler(async (req, res, next) => {
       .withMessage(
         "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:"
       ),
-    body("gender")
-      .trim()
-      .notEmpty()
-      .withMessage("gender is required")
-      .isIn(["M", "F", "O"])
-      .withMessage("gender should be M, F, O"),
   ];
 
   await Promise.all(rules.map((rule) => rule.run(req)));

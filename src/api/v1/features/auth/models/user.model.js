@@ -41,7 +41,6 @@ const userSchema = new mongoose.Schema(
         values: ["M", "F", "O"],
         message: "Gender should be either M , F, O",
       },
-      required: true,
     },
     avatar: avatarSchema,
     lastLoggedInAt: {
@@ -53,7 +52,7 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ["ADMIN", "MANAGER", "CLIENT", "DEVELOPER"],
-      default: "ADMIN",
+      default: "DEVELOPER",
     },
 
     disable: {
@@ -64,17 +63,12 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    friends: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
     phoneNumber: {
       type: String,
       trim: true,
       minLength: 10,
       maxLength: 10,
+      sparse: true, // Allows multiple documents to have a null value for phoneNumber
       validate: {
         validator: function (v) {
           return /^([987]{1})(\d{1})(\d{8})/.test(v);
