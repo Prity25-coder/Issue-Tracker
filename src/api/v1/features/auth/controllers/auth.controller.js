@@ -46,7 +46,7 @@ class AuthController {
     const { user, verifyLink } = await authService.createUser({
       userName,
       email,
-      password
+      password,
     });
 
     const response = new ApiResponse(
@@ -60,15 +60,20 @@ class AuthController {
 
   getUserVerificationStatus = asyncHandler(async (req, res) => {
     const { userId } = req.params;
+    const { token } = req.query;
     const isVerified = await authService.verificationStatus(userId);
 
-    const response = new ApiResponse(
-      STATUS_CODE.OK,
-      { isVerified },
-      "User is not verified, please check your email"
-    );
+    return res
+      .status(STATUS_CODE.OK)
+      .render("verify-user", { isVerified, userId, token });
 
-    return res.status(STATUS_CODE.OK).json(response);
+    // const response = new ApiResponse(
+    //   STATUS_CODE.OK,
+    //   { isVerified },
+    //   "User is not verified, please check your email"
+    // );
+
+    // return res.status(STATUS_CODE.OK).json(response);
   });
 
   postUserVerificationStatus = asyncHandler(async (req, res) => {
@@ -80,13 +85,15 @@ class AuthController {
     }
     const verifiedUser = await authService.verifyUser(userId, token);
 
-    const response = new ApiResponse(
-      STATUS_CODE.OK,
-      verifiedUser,
-      "User verified successfully"
-    );
+    // const response = new ApiResponse(
+    //   STATUS_CODE.OK,
+    //   verifiedUser,
+    //   "User verified successfully"
+    // );
 
-    return res.status(STATUS_CODE.OK).json(response);
+    // return res.status(STATUS_CODE.OK).json(response);
+
+    return res.status(STATUS_CODE.OK).render("verify-success");
   });
 
   postLogoutUser = asyncHandler(async (req, res) => {

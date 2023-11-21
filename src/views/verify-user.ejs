@@ -1,0 +1,16 @@
+<% if(!isVerified) { %>
+<div class="mb-5 d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-5 w-50 shadow border-info border-1 rounded-5">
+    <h1 class="mb-4 header">Recruiter SignUp</h1>
+    <form
+      action="/api/v1/auth/verify-user/<%= userId %>?token=<%= token %>"
+      method="POST"
+    >
+      <button type="submit" class="btn btn-primary w-50">Verify</button>
+    </form>
+  </div>
+</div>
+
+<% } else { %>
+<h1>Already verified</h1>
+<% } %>

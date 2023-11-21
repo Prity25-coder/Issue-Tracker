@@ -68,6 +68,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
       minLength: 10,
       maxLength: 10,
+      unique: true,
       sparse: true, // Allows multiple documents to have a null value for phoneNumber
       validate: {
         validator: function (v) {
@@ -75,7 +76,6 @@ const userSchema = new mongoose.Schema(
         },
         message: (props) => `${props.value} is not a valid phone number`,
       },
-      unique: true,
     },
     dateOfBirth: String,
   },

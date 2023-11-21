@@ -75,7 +75,7 @@ class UserService {
 
     console.log("verify user token", token);
 
-    const verifyLink = `${clientUrl}/verify-user?token=${verifyStr}&userId=${user._id}`;
+    const verifyLink = `${clientUrl}/api/v1/auth/verify-user/${user._id}?token=${verifyStr}`;
     const mailContent = {
       body: `<div>
       <h1>Welcome to next generation Authentication app</h1>
