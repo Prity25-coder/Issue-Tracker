@@ -36,6 +36,7 @@ const jwtAuth = asyncHandler(async (req, res, next) => {
         const payload = {
           userId: decodedRefreshToken.userId,
           email: decodedRefreshToken.email,
+          userName: decodedRefreshToken.userName
         };
 
         // generate new access token and attach to the session

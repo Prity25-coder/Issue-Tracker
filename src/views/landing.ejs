@@ -1,13 +1,30 @@
 <!-- background image Section -->
 <section
-  class="text-black text-center py-5 vh-100 d-flex justify-content-center align-items-center"
-  style="background-color: bisque;"
+  class="text-black text-center py-5 vh-100 d-flex justify-content-center"
+  style="background-color: bisque"
 >
-  <div class="container">
-    <h1 class="fw-bold">This is Issue Tracker Home Page</h1>
-    
-    <div>
-      <a href="/api/v1/jobs" class="btn btn-lg btn-info text-white">List of Project's</a>
+  <div class="container w-100 row justify-content-around">
+    <div class="col-6">
+      <h4>Please login to see the project list</h4>
+      <h3 class="mb-5">List of Project's</h3>
+      <!-- List of project -->
+      <div class="card bg-dark text-white mb-4">
+        <h5 class="card-title">Project Title</h5>
+        <a href="#" class="btn btn-primary">View Project</a>
+      </div>
+
+      <div class="card bg-dark text-white mb-4">
+        <h5 class="card-title">Project Title</h5>
+        <a href="#" class="btn btn-primary">View Project</a>
+      </div>
+
+      <div class="card bg-dark text-white mb-4">
+        <h5 class="card-title">Project Title</h5>
+        <a href="#" class="btn btn-primary">View Project</a>
+      </div>
+    </div>
+
+    <div class="col-6">
       <button
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
@@ -19,7 +36,7 @@
   </div>
 </section>
 
-<!-- Modal for registration starts-->
+<!-- Modal for Create New Project starts-->
 <div
   class="modal fade"
   id="staticBackdrop"
@@ -33,7 +50,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title bold" id="staticBackdropLabel">
-          Recruiter Registration
+          New Project Page
         </h3>
         <button
           type="button"
@@ -46,66 +63,48 @@
         <form action="/api/v1/auth/register" method="POST" class="p-2">
           <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-text">User Name</span>
+              <span class="input-group-text">Name</span>
               <input
                 required
                 name="name"
                 type="text"
                 aria-label="name"
                 class="form-control"
-                placeholder="enter your username"
+                placeholder="enter project name"
               />
             </div>
           </div>
 
           <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-text">Email</span>
-              <input
-                required
-                name="email"
-                type="email"
-                aria-label="email"
-                class="form-control"
-                placeholder="enter your email"
-              />
+              <span class="input-group-text">Description</span>
+              <textarea name="Description" id="Description"></textarea>
             </div>
           </div>
           <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-text">Password</span>
+              <span class="input-group-text">Author</span>
               <input
                 required
-                name="password"
-                type="password"
-                aria-label="password"
+                name="author"
+                type="text"
+                aria-label="text"
                 class="form-control"
-                placeholder="enter your password"
+                placeholder="enter author name"
               />
             </div>
           </div>
-
-          <button type="submit" class="btn btn-primary">Register</button>
         </form>
       </div>
-      <div
-        class="modal-footer d-flex align-items-centre justify-content-between"
-      >
+     
         <div
-          class="left d-flex flex-row align-items-centre justify-content-centre"
+          class="left d-flex flex-row align-items-end justify-content-centre"
         >
           <!-- Button trigger login modal -->
-          <span>Already registered?</span>
-          <button
-            type="button"
-            class="btn btn-sm px-3 btn-outline-success"
-            data-bs-toggle="modal"
-            data-bs-target="#loginModal"
-          >
-            login
-          </button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-danger">Cancel</button>
         </div>
-        <div>
+      
           <a href="#"><i class="text-primary bi bi-twitter"></i></a>
           <a href="#"><i class="text-danger bi bi-instagram"></i></a>
           <a href="#"><i class="text-info bi bi-facebook"></i></a>
@@ -116,6 +115,7 @@
     </div>
   </div>
 </div>
+
 <!-- Modal for registration ends -->
 
 <!-- Modal for login starts -->
@@ -130,7 +130,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5 text-success" id="exampleModalLabel">
-          Recruiter Login
+          User Login
         </h1>
         <button
           type="button"
