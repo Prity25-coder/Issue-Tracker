@@ -33,7 +33,8 @@ class AuthController {
       "Successfully Logged In..."
     );
 
-    return res.status(STATUS_CODE.OK).json(response);
+    return res.status(STATUS_CODE.OK).redirect("/");
+    // return res.status(STATUS_CODE.OK).json(response);
   });
 
   getRegisterForm = asyncHandler(async (req, res) => {

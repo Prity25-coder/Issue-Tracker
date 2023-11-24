@@ -219,6 +219,7 @@ class UserService {
     const payload = {
       userId: user._id.toString(),
       email,
+      userName: user.userName
     };
     // console.log(payload);
     const accessToken = generateAccessToken(payload);

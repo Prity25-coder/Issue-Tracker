@@ -26,6 +26,7 @@ import {
 } from "../src/api/common/index.js";
 import STATUS_CODE from "./constants/statusCode.js";
 import expressEjsLayouts from "express-ejs-layouts";
+import jwtAuth from "./api/v1/middlewares/jwtAuth.middleware.js";
 
 // api doc (json file)
 const apiDocs = JSON.parse(await readFile(path.resolve("swagger.json")));
@@ -100,7 +101,7 @@ app.set('views', path.resolve('src', 'views'));
 app.use(expressEjsLayouts);
 
 // Root path
-app.get("/",(req,res) =>{
+app.get("/", jwtAuth, (req,res) =>{
   return res.status(STATUS_CODE.OK).render("landing")
 })
 

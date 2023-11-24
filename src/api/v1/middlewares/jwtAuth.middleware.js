@@ -17,12 +17,14 @@ const jwtAuth = asyncHandler(async (req, res, next) => {
   if (!(accessToken && refreshToken)) {
     await destroySession(req);
     res.clearCookie("connect.sid");
-    throw new CustomError("Unauthorized access", STATUS_CODE.UNAUTHORIZED);
+    return res.status(STATUS_CODE.OK).redirect("/api/v1/auth/login")
+    // throw new CustomError("Unauthorized access", STATUS_CODE.UNAUTHORIZED);
   }
 
   try {
     const decodedAccessToken = jwtAccessDecode(accessToken);
     req.user = decodedAccessToken;
+    res.locals.userName = decodedAccessToken.userName; // to identify in ejs user is logged in or not
     console.log("Access token is valid");
   } catch (error) {
     // if token is expired then reassign the access token and attach to the session
@@ -36,7 +38,7 @@ const jwtAuth = asyncHandler(async (req, res, next) => {
         const payload = {
           userId: decodedRefreshToken.userId,
           email: decodedRefreshToken.email,
-          userName: decodedRefreshToken.userName
+          userName: decodedRefreshToken.userName,
         };
 
         // generate new access token and attach to the session
@@ -44,6 +46,7 @@ const jwtAuth = asyncHandler(async (req, res, next) => {
         req.session.accessToken = newAccessToken;
 
         req.user = payload;
+        res.locals.userName = payload.userName; // to identify in ejs user is logged in or not
         console.log("new Access token generated");
       } catch (error) {
         console.log("Refresh token expired");
