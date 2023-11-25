@@ -1,40 +1,41 @@
 <!-- background image Section -->
-<section
-  class="text-black text-center py-5 vh-100 d-flex justify-content-center"
-  style="background-color: bisque"
->
-  <div class="container w-100 row justify-content-around">
-    <div class="col-6">
-      <h4>Please login to see the project list</h4>
-      <h3 class="mb-5">List of Project's</h3>
-      <!-- List of project -->
-      <div class="card bg-dark text-white mb-4">
-        <h5 class="card-title">Project Title</h5>
-        <a href="#" class="btn btn-primary">View Project</a>
-      </div>
-
-      <div class="card bg-dark text-white mb-4">
-        <h5 class="card-title">Project Title</h5>
-        <a href="#" class="btn btn-primary">View Project</a>
-      </div>
-
-      <div class="card bg-dark text-white mb-4">
-        <h5 class="card-title">Project Title</h5>
-        <a href="#" class="btn btn-primary">View Project</a>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <button
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
-        class="btn btn-lg btn-info text-white mx-2"
-      >
-        Create New Project
-      </button>
-    </div>
+<div class="container">
+  <!-- Create project button -->
+  <div class="py-2 d-flex justify-content-between">
+    <h3>List of Project's</h3>
+    <button
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      class="btn btn-info text-white"
+    >
+      Create New Project
+    </button>
   </div>
-</section>
+
+  <!-- List of project -->
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">SI No</th>
+        <th scope="col">Project Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>
+          <a type="button" class="btn btn-link" href="/api/v1/projects/todo">
+            View
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <!-- Modal for Create New Project starts-->
 <div
