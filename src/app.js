@@ -108,6 +108,7 @@ app.get("/", jwtAuth, (req,res) =>{
 
 // all auth routes
 app.use("/api/v1/auth", authRouter);
+
 // project routes
 app.use("/api/v1/projects", projectRouter)
 

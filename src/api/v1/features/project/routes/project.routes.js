@@ -1,7 +1,9 @@
 import { Router } from "express";
 import projectController from "../controllers/project.controller.js";
+import jwtAuth from "../../../middlewares/jwtAuth.middleware.js";
 
 const projectRouter = Router();
+projectRouter.use(jwtAuth);
 
 // /api/v1/projects
 projectRouter.get("/", projectController.getAllProject);

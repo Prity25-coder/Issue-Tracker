@@ -1,9 +1,30 @@
+import mongoose from "mongoose";
+import Project from "../models/project.model.js";
+
+const { ObjectId } = mongoose.Types;
+
 class ProjectService {
-  allProject = async () => {};  
+  allProject = async (userId) => {
+    const allProject = await Project.find({ _id: userId });
+    return allProject;
+  };
 
-  projectById = async () => {};
+  projectById = async (projectId) => {
+    const project = await Project.findOne({ _id: projectId });
+    return project;
+  };
 
-  createProject = async () => {};
+  createProject = async (userId, projectName, description, author) => {
+    const project = new Project({
+      projectName,
+      description,
+      author,
+      createdBy: new ObjectId(userId),
+    });
+    await project.save();
+
+    return project;
+  };
 
   updateProject = async () => {};
 
