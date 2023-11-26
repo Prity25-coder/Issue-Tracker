@@ -5,7 +5,7 @@ const { ObjectId } = mongoose.Types;
 
 class ProjectService {
   allProject = async (userId) => {
-    const allProject = await Project.find({ _id: userId });
+    const allProject = await Project.find({ createdBy: new ObjectId(userId) });
     return allProject;
   };
 

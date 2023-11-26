@@ -19,20 +19,28 @@
         <th scope="col">SI No</th>
         <th scope="col">Project Name</th>
         <th scope="col">Author</th>
-        <th scope="col">Details</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
+      <% if(projects.length > 0) { projects.forEach((project, index) => { %>
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= project.projectName %></td>
+        <td><%= project.author %></td>
         <td>
-          <a type="button" class="btn btn-link" href="/api/v1/projects">
+          <a
+            type="button"
+            class="btn btn-link"
+            href="/api/v1/projects/<%= project._id %>"
+          >
             View
           </a>
         </td>
       </tr>
+      <% }) } else { %>
+      <h1>No Projects found</h1>
+      <% } %>
     </tbody>
   </table>
 </div>
@@ -61,13 +69,13 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="/api/v1/auth/register" method="POST" class="p-2">
+        <form action="/api/v1/projects/" method="POST" class="p-2">
           <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-text">Name</span>
+              <span class="input-group-text">Project Name</span>
               <input
                 required
-                name="name"
+                name="projectName"
                 type="text"
                 aria-label="name"
                 class="form-control"
@@ -79,7 +87,7 @@
           <div class="mb-3">
             <div class="input-group">
               <span class="input-group-text">Description</span>
-              <textarea name="Description" id="Description"></textarea>
+              <textarea name="description" id="Description" required></textarea>
             </div>
           </div>
           <div class="mb-3">
@@ -95,13 +103,22 @@
               />
             </div>
           </div>
-        </form>
-      </div>
 
-      <div class="modal-footer" align="end">
-        <!-- Button trigger login modal -->
-        <button type="button" class="btn btn-danger">Cancel</button>
-        <button type="submit" class="btn btn-primary" onclick="">Submit</button>
+          <div align="end">
+            <!-- Button trigger login modal -->
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary" onclick="">
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

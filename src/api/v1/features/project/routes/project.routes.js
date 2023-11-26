@@ -7,8 +7,13 @@ projectRouter.use(jwtAuth);
 
 // /api/v1/projects
 projectRouter.get("/", projectController.getAllProject);
+
 projectRouter.post("/", projectController.postNewProject);
+
+projectRouter.get("/:projectId", projectController.getProjectById)
+
 projectRouter.patch("/:projectId", projectController.patchProjectById);
+
 projectRouter.delete("/:projectId", projectController.deleteProjectById);
 
 export default projectRouter;

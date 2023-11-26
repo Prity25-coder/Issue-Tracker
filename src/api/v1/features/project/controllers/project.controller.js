@@ -5,7 +5,7 @@ class ProjectController {
   getAllProject = asyncHandler(async (req, res) => {
     const { userId } = req.user;
     const projects = await projectService.allProject(userId);
-    return res.status(STATUS_CODE.OK).render("projectDetails", { projects });
+    return res.status(STATUS_CODE.OK).render("landing", { projects });
   });
 
   getProjectById = asyncHandler(async (req, res) => {
@@ -24,7 +24,7 @@ class ProjectController {
       description,
       author
     );
-    return res.status(STATUS_CODE.OK).render("projectDetails", { postProject });
+    return res.status(STATUS_CODE.OK).redirect("/");
   });
 
   patchProjectById = asyncHandler(async (req, res) => {});

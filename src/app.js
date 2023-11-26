@@ -97,20 +97,20 @@ app.use(apiLimiter);
 app.use(loggerMiddleware);
 
 // set-up for template engine
-app.set('view engine', 'ejs');
-app.set('views', path.resolve('src', 'views'));
+app.set("view engine", "ejs");
+app.set("views", path.resolve("src", "views"));
 app.use(expressEjsLayouts);
 
 // Root path
-app.get("/", jwtAuth, (req,res) =>{
-  return res.status(STATUS_CODE.OK).render("landing")
-})
+app.get("/", jwtAuth, (req, res) => {
+  return res.status(STATUS_CODE.OK).redirect("/api/v1/projects/");
+});
 
 // all auth routes
 app.use("/api/v1/auth", authRouter);
 
 // project routes
-app.use("/api/v1/projects", projectRouter)
+app.use("/api/v1/projects", projectRouter);
 
 // for api documentation using swagger.
 // ? Keeping swagger code at the end so that we can load swagger on "/" or "/api/v1/docs" route
