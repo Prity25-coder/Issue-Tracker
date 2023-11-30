@@ -15,6 +15,10 @@ class IssueController {
     return res.status(STATUS_CODE.OK).render("viewIssue", { issue });
   });
 
+  getCreateIssuePage = asyncHandler(async (req, res) => {
+    return res.status(STATUS_CODE.OK).render("createIssue");
+  });
+
   postNewIssue = asyncHandler(async (req, res) => {
     const { userId } = req.user;
     const { title, labels, description, author } = req.body;
@@ -27,10 +31,6 @@ class IssueController {
       author
     );
     return res.status(STATUS_CODE.OK).redirect("/api/v1/issues/");
-  });
-  
-  getCreateIssuePage = asyncHandler(async (req, res) => {
-    return res.status(STATUS_CODE.OK).render("createIssue");
   });
 
   patchIssueById = asyncHandler(async (req, res) => {
