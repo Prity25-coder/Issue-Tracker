@@ -6,7 +6,7 @@ class IssueController {
   getAllIssue = asyncHandler(async (req, res) => {
     const { userId } = req.user;
     const issues = await issueService.allIssue(userId);
-    return res.status(STATUS_CODE.OK).render("viewIssue", { issues });
+    return res.status(STATUS_CODE.OK).render("viewAllIssues", { issues });
   });
 
   getIssueById = asyncHandler(async (req, res) => {
@@ -26,7 +26,11 @@ class IssueController {
       description,
       author
     );
-    return res.status(STATUS_CODE.OK).render("createIssue", { postIssue });
+    return res.status(STATUS_CODE.OK).redirect("/api/v1/issues/");
+  });
+  
+  getCreateIssuePage = asyncHandler(async (req, res) => {
+    return res.status(STATUS_CODE.OK).render("createIssue");
   });
 
   patchIssueById = asyncHandler(async (req, res) => {

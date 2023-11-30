@@ -15,4 +15,7 @@ issueRouter.patch("/:issueId", issueController.patchIssueById);
 
 issueRouter.delete("/:issueId", issueController.deleteIssueById);
 
+// create issue
+issueRouter.get("/create", issueController.getCreateIssuePage);
+
 export default issueRouter;
