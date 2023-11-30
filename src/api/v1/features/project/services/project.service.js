@@ -12,7 +12,7 @@ class ProjectService {
   projectById = async (projectId) => {
     const project = await Project.findOne({ _id: projectId });
     return project;
-  };
+  }; 
 
   createProject = async (userId, projectName, description, author) => {
     const project = new Project({
@@ -26,9 +26,33 @@ class ProjectService {
     return project;
   };
 
-  updateProject = async () => {};
+  updateProject = async (projectId, updateObj) => {
+    const project = await Project.findOne({ _id: projectId });
 
-  deleteProject = async () => {};
+    if (!project) {
+      throw new CustomError("No project found", STATUS_CODE.NOT_FOUND);
+    }
+    const updatedProject = await Project.findOneAndUpdate(
+      { _id: projectId },
+      { ...updateObj },
+      {
+        new: true,
+      }
+    );
+    return updatedProject;
+  };
+
+  deleteProject = async (projectId) => {
+    const project = await Project.findOne({ _id: projectId });
+
+    if (!project) {
+      throw new CustomError("No project found", STATUS_CODE.NOT_FOUND);
+    }
+
+    const deletedProject = await Project.findOneAndDelete({ _id: projectId });
+
+    return deletedProject;
+  };
 }
 const projectService = new ProjectService();
 export default projectService;
