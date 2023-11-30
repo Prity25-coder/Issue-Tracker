@@ -1,17 +1,10 @@
-<h1>project name:  <%= project.projectName %></h1>
-
-
-<div
-  class="modal fade"
-  id="staticBackdropDetails"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
-  <div align="end">
-    <button type="button" class="btn btn-info">Create Issue</button>
+<!-- <h1>project name:  <%= project.projectName %></h1> -->
+<div class="container">
+  <div class="d-flex flex-row-reverse mt-2 grid gap-3">
+    <a type="button" class="btn btn-info" href="/api/v1/issues/"
+      >Create Issue</a
+    >
+    <a type="button" class="btn btn-info" href="/api/v1/issues/">View all Issue</a>
   </div>
 
   <div>
@@ -31,20 +24,11 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">fft</th>
-          <td>Mark</td>
-          <td>Otto</td>
-        </tr>
-        <tr>
-          <th scope="row">nbfr</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
+          <th scope="row"><%= project.projectName %></th>
+          <td><%= project.author %></td>
+          <td><%= project.description %></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div align="end">
-    <button  type="button" class="btn btn-info">View all Issue</button>
-  </div>
-  
 </div>
