@@ -1,6 +1,8 @@
 <!-- <h1>project name:  <%= project.projectName %></h1> -->
 <div class="container">
-  <div class="mt-2 grid gap-3">
+  <div class="mt-2 d-flex justify-content-between">
+    <h3>Project Details Page</h3>
+
     <a type="button" class="btn btn-info" href="/api/v1/issues/"
       >View all Issue</a
     >
@@ -10,28 +12,22 @@
     >
   </div>
 
-  <div>
-    <h3>Project Details Page</h3>
-    <table
-      action="/"
-      method="POST"
-      class="table table-dark"
-      id="staticBackdropDetails"
-    >
-      <thead>
-        <tr>
-          <th scope="col">Project Name</th>
-          <th scope="col">Author</th>
-          <th scope="col">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row"><%= project.projectName %></th>
-          <td><%= project.author %></td>
-          <td><%= project.description %></td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- details -->
+  <div class="mt-4">
+    <div class="mb-3">
+      <p>Project Name : <span><%= project.projectName %></span></p>
+    </div>
+    <div class="mb-3">
+      <p>Author : <span><%=project.author %></span></p>
+    </div>
+    <div class="mb-3">
+      <p>Description : <span><%=project.description %></span></p>
+    </div>
+    <div class="mb-3">
+      <p>Title : <span><%=project.description %></span></p>
+    </div>
+    <div class="mb-3">
+      <p>Issue : <span><%=project.description %></span></p>
+    </div>
   </div>
 </div>
