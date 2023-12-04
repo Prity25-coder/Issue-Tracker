@@ -23,3 +23,8 @@ const empType = document.getElementById("empType");
 if (empType) {
   empType.value = empType?.getAttribute("value");
 }
+
+// createIssue page cancel button
+// function cancelForm() {
+//   document.getElementById("createIssue").reset();
+// }
