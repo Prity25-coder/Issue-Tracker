@@ -27,8 +27,9 @@ import {
 import STATUS_CODE from "./constants/statusCode.js";
 import expressEjsLayouts from "express-ejs-layouts";
 import jwtAuth from "./api/v1/middlewares/jwtAuth.middleware.js";
-import projectRouter from "./api/v1/features/project/routes/project.routes.js";
+import { projectRouter } from "./api/v1/features/project/index.js";
 import issueRouter from "./api/v1/features/issue/routes/issue.routes.js";
+import { labelRouter } from "./api/v1/features/label/index.js";
 
 // api doc (json file)
 const apiDocs = JSON.parse(await readFile(path.resolve("swagger.json")));
@@ -115,6 +116,9 @@ app.use("/api/v1/projects", projectRouter);
 
 // all issue routes
 app.use("/api/v1/issues", issueRouter);
+
+// all labels routes
+app.use("/api/v1/labels", labelRouter);
 
 // for api documentation using swagger.
 // ? Keeping swagger code at the end so that we can load swagger on "/" or "/api/v1/docs" route

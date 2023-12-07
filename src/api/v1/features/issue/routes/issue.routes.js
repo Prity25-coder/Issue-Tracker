@@ -9,13 +9,13 @@ issueRouter.use(jwtAuth);
 issueRouter.get("/", issueController.getAllIssue);
 
 // create issue
-issueRouter.get("/create", issueController.getCreateIssuePage);
+issueRouter.get("/:projectId/create", issueController.getCreateIssuePage);
 
 // api/v1/issues/232323232 --> inside req.params issueId = 232323232
 // api/v1/issues/create -->  inside req.params issueId = create
 issueRouter.get("/:issueId", issueController.getIssueById);
 
-issueRouter.post("/", issueController.postNewIssue);
+issueRouter.post("/:projectId", issueController.postNewIssue);
 
 issueRouter.patch("/:issueId", issueController.patchIssueById);
 

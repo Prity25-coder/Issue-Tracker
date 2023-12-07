@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import issueService from "../services/issue.service.js";
 import STATUS_CODE from "../../../../../constants/statusCode.js";
 import { CustomError } from "../../../../common/index.js";
+import { labelService } from "../../label/index.js";
 class IssueController {
   getAllIssue = asyncHandler(async (req, res) => {
     const { userId } = req.user;
@@ -16,20 +17,32 @@ class IssueController {
   });
 
   getCreateIssuePage = asyncHandler(async (req, res) => {
-    return res.status(STATUS_CODE.OK).render("createIssue");
+    // get all labels
+    const { userId } = req.user;
+    const { projectId } = req.params;
+    const labels = await labelService.allLabels(userId);
+    console.log(labels);
+    return res
+      .status(STATUS_CODE.OK)
+      .render("createIssue", { labels, projectId });
   });
 
   postNewIssue = asyncHandler(async (req, res) => {
     const { userId } = req.user;
-    const { title, labels, description, author } = req.body;
+    const { projectId } = req.params;
+    const { title, label, description, author } = req.body;
 
-    const postIssue = await issueService.createIssue(
-      userId,
-      title,
-      labels,
-      description,
-      author
-    );
+    //! Bug
+
+    // const postIssue = await issueService.createIssue(
+    //   userId,
+    //   title,
+    //   label,
+    //   description,
+    //   author
+    // );
+
+    // console.log(postIssue);
     return res.status(STATUS_CODE.OK).redirect("/api/v1/issues/");
   });
 

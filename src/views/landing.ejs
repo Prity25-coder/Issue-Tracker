@@ -3,13 +3,25 @@
   <!-- Create project button -->
   <div class="py-2 d-flex justify-content-between">
     <h3>List of Project's</h3>
-    <button
-      data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop"
-      class="btn btn-info text-white"
-    >
-      Create New Project
-    </button>
+
+    <div>
+      <button
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        class="btn btn-info text-white"
+      >
+        Create New Project
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#labelModel"
+      >
+        Create Label
+      </button>
+    </div>
   </div>
 
   <!-- List of project -->
@@ -125,9 +137,60 @@
   </div>
 </div>
 
-<!-- Modal for registration ends -->
+<!-- create new label -->
+<div
+  class="modal"
+  id="labelModel"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Create New Label Page
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/api/v1/labels" method="POST">
+          <div class="mb-3">
+            <label for="title" class="input-group">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required/>
+          </div>
+          <div class="mb-3">
+            <label for="description " class="input-group">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              name="description"
+              required
+            ></textarea>
+          </div>
+          <div align="end">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Create Label</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Modal for login starts -->
+
+<!-- Modal for login starts  remove-->
 <div
   class="modal fade"
   id="loginModal"

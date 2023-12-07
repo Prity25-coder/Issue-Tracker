@@ -3,13 +3,18 @@
   <div class="mt-2 d-flex justify-content-between">
     <h3>Project Details Page</h3>
 
-    <a type="button" class="btn btn-info" href="/api/v1/issues/"
-      >View all Issue</a
-    >
+    <div>
+      <a type="button" class="btn btn-info" href="/api/v1/issues/"
+        >View all Issue</a
+      >
 
-    <a type="button" class="btn btn-info" href="/api/v1/issues/create"
-      >Create Issue</a
-    >
+      <a
+        type="button"
+        class="btn btn-info"
+        href="/api/v1/issues/<%= project._id %>/create"
+        >Create Issue</a
+      >
+    </div>
   </div>
 
   <!-- details -->
@@ -22,12 +27,6 @@
     </div>
     <div class="mb-3">
       <p>Description : <span><%=project.description %></span></p>
-    </div>
-    <div class="mb-3">
-      <p>Title : <span><%=project.description %></span></p>
-    </div>
-    <div class="mb-3">
-      <p>Issue : <span><%=project.description %></span></p>
     </div>
   </div>
 </div>
