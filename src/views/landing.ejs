@@ -51,7 +51,7 @@
           <span>
             <a
               class="text-danger delete-project"
-              data-project-id="<%= project._id %>"
+              project-id="<%= project._id %>"
               style="cursor: pointer"
             >
               <i class="bi bi-trash"></i> </a
@@ -202,69 +202,3 @@
   </div>
 </div>
 
-<!-- Modal for login starts  remove-->
-<div
-  class="modal fade"
-  id="loginModal"
-  tabindex="-1"
-  aria-labelledby="loginModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 text-success" id="exampleModalLabel">
-          User Login
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form action="/api/v1/auth/login" method="POST" class="p-2">
-          <div class="mb-3">
-            <div class="input-group">
-              <span class="input-group-text">Email</span>
-              <input
-                required=""
-                name="email"
-                type="email"
-                aria-label="email"
-                class="form-control"
-                placeholder="enter your email"
-              />
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="input-group">
-              <span class="input-group-text">Password</span>
-              <input
-                required=""
-                name="password"
-                type="password"
-                aria-label="password"
-                class="form-control"
-                placeholder="enter your password"
-              />
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-sm btn-danger"
-          data-bs-dismiss="modal"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal for login ends -->

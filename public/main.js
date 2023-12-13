@@ -1,65 +1,39 @@
 // Logout post request
-// document
-//   .getElementById("logOutBtn")
-//   ?.addEventListener("click", handleLogoutBtnClick);
+// 1st method
+const LogoutLink = document.getElementById("logoutLink");
+const DeleteProjectButtons = document.querySelectorAll(".delete-project");
 
-// function to handle logout btn click
-document.addEventListener("DOMContentLoaded", () => {
-  const logoutBtn = document.getElementById("logoutBtn");
+if (LogoutLink) {
+  LogoutLink.addEventListener("click", handleLogoutBtnClick);
+}
 
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", async () => {
-      try {
-        const options = {
-          method: "POST",
-        };
+// logout btn click handler
+async function handleLogoutBtnClick() {
+  const options = {
+    method: "POST",
+  };
 
-        const response = await fetch("/api/v1/auth/logout", options);
-
-        if (response.ok && response.status === 200) {
-          location.reload();
-        } else {
-          console.error("Logout failed:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error during logout:", error);
-      }
-    });
+  try {
+    const response = await fetch("/api/v1/auth/logout", options);
+    if (response.ok && response.status === 200) {
+      location.reload();
+    }
+  } catch (error) {
+    console.log(error);
   }
-});
-
-// old function to handle logout btn click
-// async function handleLogoutBtnClick() {
-//   const options = {
-//     method: "POST",
-//   };
-
-//   try {
-//     const response = await fetch("/api/v1/auth/logout", options);
-//     if (response.ok && response.status === 200) {
-//       location.reload();
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-const empType = document.getElementById("empType");
-if (empType) {
-  empType.value = empType?.getAttribute("value");
 }
 
 // add lister to delete project
-document.addEventListener("DOMContentLoaded", () => {
-  const deleteProject = document.querySelectorAll(".delete-project");
+if (DeleteProjectButtons.length > 0) {
+  DeleteProjectButtons.forEach((projectDeleteBtn) => {
+    // get project id from element
+    const projectId = projectDeleteBtn.getAttribute("project-id");
 
-  deleteProject.forEach((projectId) => {
-    projectId.addEventListener("click", () => {
-      const project = projectId.getAttribute("data-project-id");
-      handleDeleteProject(project);
-    });
+    projectDeleteBtn.addEventListener("click", () =>
+      handleDeleteProject(projectId)
+    );
   });
-});
+}
 
 // delete project function
 async function handleDeleteProject(projectId) {
@@ -86,8 +60,3 @@ async function handleDeleteProject(projectId) {
     console.log(error);
   }
 }
-
-// createIssue page cancel button
-// function cancelForm() {
-//   document.getElementById("createIssue").reset();
-// }
