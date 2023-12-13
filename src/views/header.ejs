@@ -36,7 +36,7 @@
               <% if (locals.userName) { %>
               <a
                 class="dropdown-item"
-                onclick="handleLogoutBtnClick()"
+                id="logoutBtn"
                 style="cursor: pointer"
                 >Logout</a
               >
@@ -47,7 +47,12 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex" role="search" action="/api/v1/jobs/search" method="get">
+      <form
+        class="d-flex"
+        role="search"
+        action="/api/v1/jobs/search"
+        method="get"
+      >
         <input
           class="form-control me-2"
           type="search"

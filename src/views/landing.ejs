@@ -48,7 +48,14 @@
           >
             View
           </a>
-          <span><i class="bi bi-trash"></i></span>
+          <span>
+            <a
+              class="text-danger delete-project"
+              data-project-id="<%= project._id %>"
+              style="cursor: pointer"
+            >
+              <i class="bi bi-trash"></i> </a
+          ></span>
         </td>
       </tr>
       <% }) } else { %>
@@ -60,7 +67,7 @@
 
 <!-- Modal for Create New Project starts-->
 <div
-  class="modal fade"
+  class="modal"
   id="staticBackdrop"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
@@ -68,7 +75,7 @@
   aria-labelledby="staticBackdropLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title bold" id="staticBackdropLabel">
@@ -82,7 +89,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="/api/v1/projects/" method="POST" class="p-2">
+        <form action="/api/v1/projects/" method="POST">
           <div class="mb-3">
             <div class="input-group">
               <span class="input-group-text">Project Name</span>
@@ -162,7 +169,13 @@
         <form action="/api/v1/labels" method="POST">
           <div class="mb-3">
             <label for="title" class="input-group">Title</label>
-            <input type="text" class="form-control" id="title" name="title" required/>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              required
+            />
           </div>
           <div class="mb-3">
             <label for="description " class="input-group">Description</label>
@@ -188,7 +201,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- Modal for login starts  remove-->
 <div
