@@ -4,7 +4,10 @@
     <h3>Project Details Page</h3>
 
     <div>
-      <a type="button" class="btn btn-info" href="/api/v1/issues/"
+      <a
+        type="button"
+        class="btn btn-info"
+        href="/api/v1/issues/<%= project._id %>"
         >View all Issue</a
       >
 
@@ -20,7 +23,10 @@
   <!-- details -->
   <div class="mt-4">
     <div class="mb-3">
-      <p>Project Name : <span class="text-success"><%= project.projectName %></span></p>
+      <p>
+        Project Name :
+        <span class="text-success"><%= project.projectName %></span>
+      </p>
     </div>
     <div class="mb-3">
       <p>Author : <span><%=project.author %></span></p>

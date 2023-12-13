@@ -6,7 +6,7 @@ const issueRouter = Router();
 issueRouter.use(jwtAuth);
 
 // /api/v1/issues
-issueRouter.get("/", issueController.getAllIssue);
+issueRouter.get("/:projectId", issueController.getAllIssue);
 
 // create issue
 issueRouter.get("/:projectId/create", issueController.getCreateIssuePage);

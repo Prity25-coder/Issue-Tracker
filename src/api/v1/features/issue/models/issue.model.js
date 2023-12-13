@@ -13,13 +13,17 @@ const issueSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
-    labels: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Label",
-        required: true,
-      },
-    ],
+    // labels: [
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Label",
+    //     required: true,
+    //   },
+    // ],
+    label: {
+      type: String,
+      required: true,
+    },
     author: {
       type: String,
       trim: true,

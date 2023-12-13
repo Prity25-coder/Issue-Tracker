@@ -6,7 +6,9 @@ import { labelService } from "../../label/index.js";
 class IssueController {
   getAllIssue = asyncHandler(async (req, res) => {
     const { userId } = req.user;
-    const issues = await issueService.allIssue(userId);
+    const { projectId } = req.params;
+    const issues = await issueService.allIssue(userId, projectId);
+    console.log("All Issues", issues); //! remove
     return res.status(STATUS_CODE.OK).render("viewAllIssues", { issues });
   });
 
@@ -32,18 +34,17 @@ class IssueController {
     const { projectId } = req.params;
     const { title, label, description, author } = req.body;
 
-    //! Bug
-
-    // const postIssue = await issueService.createIssue(
-    //   userId,
-    //   title,
-    //   label,
-    //   description,
-    //   author
-    // );
+    const postIssue = await issueService.createIssue(
+      userId,
+      projectId,
+      title,
+      label,
+      description,
+      author
+    );
 
     // console.log(postIssue);
-    return res.status(STATUS_CODE.OK).redirect("/api/v1/issues/");
+    return res.status(STATUS_CODE.OK).redirect(`/api/v1/issues/${projectId}`);
   });
 
   patchIssueById = asyncHandler(async (req, res) => {

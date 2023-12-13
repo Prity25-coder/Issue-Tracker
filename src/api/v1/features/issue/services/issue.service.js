@@ -5,8 +5,11 @@ import { CustomError } from "../../../../common/index.js";
 const { ObjectId } = mongoose.Types;
 
 class IssueService {
-  allIssue = async (userId) => {
-    const allIssue = await Issue.find({ createdBy: new ObjectId(userId) });
+  allIssue = async (userId, projectId) => {
+    const allIssue = await Issue.find({
+      createdBy: new ObjectId(userId),
+      projectId: new ObjectId(projectId),
+    });
     return allIssue;
   };
 
@@ -15,12 +18,20 @@ class IssueService {
     return issue;
   };
 
-  createIssue = async (userId, title, labels, description, author) => {
+  createIssue = async (
+    userId,
+    projectId,
+    title,
+    label,
+    description,
+    author
+  ) => {
     const issue = new Issue({
       title,
-      labels,
       description,
+      label,
       author,
+      projectId: new ObjectId(projectId),
       createdBy: new ObjectId(userId),
     });
     await issue.save();
