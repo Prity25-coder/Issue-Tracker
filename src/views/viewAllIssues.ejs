@@ -1,2 +1,52 @@
-<h1>This is all Issue Page</h1>
-<p><%= new Date(issues[0].createdAt).toLocaleString() %></p>
+<div class="container">
+  <h1>This is all Issue Page</h1>
+
+  <!-- collapse -->
+  <p class="d-inline-flex gap-1">
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseExample"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      view Issues
+    </button>
+    <a
+      class="btn btn-danger"
+      data-bs-dismiss="collapse"
+      aria-label="Close"
+      href="#collapseExample"
+      >Close</a
+    >
+  </p>
+  <div class="collapse mb-4" id="collapseExample">
+    <div class="card card-body">
+      <div>
+        <% if(issues.length > 0) { issues.forEach((issue,index) => { %>
+        <p class="bg-warning">
+          SI NO :- <%= index + 1 %>
+          <span
+            >Created At :- <%= new Date(issue.createdAt).toLocaleString()
+            %></span
+          >
+          <span
+            class="text-danger delete-issue"
+            issue-id="<%= issue._id %>"
+            style="cursor: pointer"
+          >
+            <i class="bi bi-trash"></i>
+          </span>
+        </p>
+        <p>Title :- <%= issue.title %></p>
+        <p>Description :- <%= issue.description %></p>
+        <p>Label :- <%= issue.label %></p>
+        <p>Author :- <%= issue.author %></p>
+        <% }) } else { %>
+        <h1>Issue not found</h1>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
