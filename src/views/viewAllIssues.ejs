@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>This is all Issue Page</h1>
+  <h1>All Issue's</h1>
 
   <!-- accordion -->
 
@@ -25,12 +25,15 @@
         data-bs-parent="#accordionExample"
       >
         <div class="accordion-body">
-          <span
+          <span class="bg-warning"
             >Created At :- <%= new Date(issue.createdAt).toLocaleString()
             %></span
           >
-          <p>Description :- <%= issue.description %></p>
-          <p>Author :- <%= issue.author %></p>
+          <p>
+            Description :-
+            <span class="text-success"><%= issue.description %></span>
+          </p>
+          <p>Author :- <span class="text-success"><%= issue.author %></span></p>
         </div>
 
         <div align="end" class="me-5 mb-2">
@@ -46,7 +49,11 @@
       </div>
     </div>
     <% })} else { %>
-    <h1>Issue not found</h1>
+    <h1>
+      <marquee class="text-danger" behavior="" direction="right"
+        >Issue not found</marquee
+      >
+    </h1>
 
     <% } %>
   </div>

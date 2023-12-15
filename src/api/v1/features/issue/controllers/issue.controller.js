@@ -8,7 +8,6 @@ class IssueController {
     const { userId } = req.user;
     const { projectId } = req.params;
     const issues = await issueService.allIssue(userId, projectId);
-    console.log("All Issues", issues); //! remove
     return res
       .status(STATUS_CODE.OK)
       .render("viewAllIssues", { issues, projectId });
@@ -25,7 +24,6 @@ class IssueController {
     const { userId } = req.user;
     const { projectId } = req.params;
     const labels = await labelService.allLabels(userId);
-    console.log(labels);
     return res
       .status(STATUS_CODE.OK)
       .render("createIssue", { labels, projectId });
@@ -45,7 +43,6 @@ class IssueController {
       author
     );
 
-    // console.log(postIssue);
     return res.status(STATUS_CODE.OK).redirect(`/api/v1/issues/${projectId}`);
   });
 

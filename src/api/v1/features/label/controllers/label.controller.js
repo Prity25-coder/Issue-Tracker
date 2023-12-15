@@ -22,7 +22,6 @@ class LabelController {
     }
 
     const label = await labelService.createLabel(title, description, userId);
-    // console.log(label);
 
     return res.status(STATUS_CODE.OK).redirect("/api/v1/projects");
   });

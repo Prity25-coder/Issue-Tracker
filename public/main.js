@@ -40,7 +40,6 @@ if (DeleteProjectButtons.length > 0) {
 
 // delete project function
 async function handleDeleteProject(projectId) {
-  // console.log(projectId);
   const isConfirm = confirm("Are you sure you want to delete this project");
 
   if (!isConfirm) return;
@@ -51,7 +50,6 @@ async function handleDeleteProject(projectId) {
 
   try {
     const response = await fetch(`/api/v1/projects/${projectId}`, options);
-    console.log(response);
     if (response.status === 401) {
       alert("You are not allowed to do this operation");
     }
@@ -76,7 +74,6 @@ if (DeleteIssueBtn.length > 0) {
 
 //handle delete issue
 async function handleDeleteIssue(issueId) {
-  console.log(issueId);
   const isConfirm = confirm("Are you sure you want to delete this issue");
 
   if (!isConfirm) return;
@@ -87,7 +84,6 @@ async function handleDeleteIssue(issueId) {
 
   try {
     const response = await fetch(`/api/v1/issues/${issueId}`, options);
-    console.log(response);
     if (response.status === 401) {
       alert("You are not allowed to do this operation");
     }
