@@ -94,9 +94,13 @@ async function handleDeleteIssue(issueId) {
     if (response.status === 200) {
       // location.href = "/api/v1/issues/";
       location.reload();
-      
     }
   } catch (error) {
     console.log(error);
   }
 }
+
+// close button to view all issues page
+document.getElementById('redirectButton').addEventListener('click', function() {
+  window.location.href = '/api/v1/projects/${projectId}'; 
+});
