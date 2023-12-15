@@ -9,7 +9,9 @@ class IssueController {
     const { projectId } = req.params;
     const issues = await issueService.allIssue(userId, projectId);
     console.log("All Issues", issues); //! remove
-    return res.status(STATUS_CODE.OK).render("viewAllIssues", { issues });
+    return res
+      .status(STATUS_CODE.OK)
+      .render("viewAllIssues", { issues, projectId });
   });
 
   getIssueById = asyncHandler(async (req, res) => {

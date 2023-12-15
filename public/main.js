@@ -99,8 +99,3 @@ async function handleDeleteIssue(issueId) {
     console.log(error);
   }
 }
-
-// close button to view all issues page
-document.getElementById('redirectButton').addEventListener('click', function() {
-  window.location.href = '/api/v1/projects/${projectId}'; 
-});

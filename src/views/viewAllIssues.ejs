@@ -1,53 +1,62 @@
 <div class="container">
   <h1>This is all Issue Page</h1>
 
-  <!-- collapse -->
-  <p class="d-inline-flex gap-1">
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#collapseExample"
-      aria-expanded="false"
-      aria-controls="collapseExample"
-    >
-      view Issues
-    </button>
-    <a
-      class="btn btn-danger"
-      data-bs-toggle="collapse"
-      data-bs-target="#collapseExample"
-      aria-label="Close"
-      id="redirectButton"
-      >Close</a
-    >
-  </p>
-  <div class="collapse mb-4" id="collapseExample">
-    <div class="card card-body">
-      <div>
-        <% if(issues.length > 0) { issues.forEach((issue,index) => { %>
-        <p class="bg-warning">
-          SI NO :- <%= index + 1 %>
+  <!-- accordion -->
+
+  <div class="accordion" id="accordionExample">
+    <% if(issues.length > 0) { issues.forEach((issue, index) => { %>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapse<%= index %>"
+          aria-expanded="true"
+          aria-controls="collapse<%= index %>"
+        >
+          <%= index + 1 %>. <%= issue.title %>
+          <span class="badge text-bg-info ms-4"><%= issue.label%></span>
+        </button>
+      </h2>
+      <div
+        id="collapse<%= index %>"
+        class="accordion-collapse collapse <%= index === 0 ? 'show': '' %>"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
           <span
             >Created At :- <%= new Date(issue.createdAt).toLocaleString()
             %></span
           >
-          <span
-            class="text-danger delete-issue"
-            issue-id="<%= issue._id %>"
-            style="cursor: pointer"
-          >
-            <i class="bi bi-trash"></i>
-          </span>
-        </p>
-        <p>Title :- <%= issue.title %></p>
-        <p>Description :- <%= issue.description %></p>
-        <p>Label :- <%= issue.label %></p>
-        <p>Author :- <%= issue.author %></p>
-        <% }) } else { %>
-        <h1>Issue not found</h1>
-        <% } %>
+          <p>Description :- <%= issue.description %></p>
+          <p>Author :- <%= issue.author %></p>
+        </div>
+
+        <div align="end" class="me-5 mb-2">
+          <span>
+            <a
+              class="text-danger delete-issue"
+              issue-id="<%= issue._id %>"
+              style="cursor: pointer"
+            >
+              <i class="bi bi-trash"></i> </a
+          ></span>
+        </div>
       </div>
     </div>
+    <% })} else { %>
+    <h1>Issue not found</h1>
+
+    <% } %>
+  </div>
+
+  <div align="end" class="py-4">
+    <a
+      class="btn btn-danger"
+      aria-label="Close"
+      href="/api/v1/projects/<%= projectId %>"
+      >Close</a
+    >
   </div>
 </div>
