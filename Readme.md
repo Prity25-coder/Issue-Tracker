@@ -19,6 +19,16 @@
 - Best env variable setup
 - Best Api response for better usability
 
+- Create Project
+- List of Project and view project details
+- Delete Project
+
+- Create Label and select Label
+
+- Create Issue
+- View Issue details
+- Delete Issue
+
 ## Code Flow
 
 - First browser sends the request to the server
